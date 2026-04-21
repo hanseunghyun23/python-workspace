@@ -4,7 +4,7 @@
 import qrcode
 qr= qrcode.QRCode(version=1,    #크기조절 1~40 숫자가 클수록 큼
                   box_size=10,  #QR코드의 각 박스 크기
-                  boarder=4)    #QR코드의 테두리 크기
+                  border=4)    #QR코드의 테두리 크기
 
 data= "https://www.naver.com"
 qr.add_data(data)
