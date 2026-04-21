@@ -25,3 +25,16 @@ while True:
 
     파일.write(글자작성 + "\n")
 파일.close()
+
+###자동으로 닫기 처리 하는 방법 : 평균적으로 사용하는 방법
+# with안에 작성한 파일 열기 파일쓰기 와 같은 블록을 자동으로 코드가 종료되면
+# close() 처리해주는 기능이 담겨있다
+# with =  나는 알아서 파일을 열고 닫을 것이다  as이 모든 동작을 파일 이라는 명칭으로 진행하겠다
+
+with open("my_diary.txt","w",encoding="utf-8") as 파일:
+    while True:
+        글자작성 = input("입력하세요 (그만하려면 q 입력):")
+        if 글자작성.lower()=="q":
+            print("저장완료!")
+            break
+        파일.write(글자작성 + "\n")
