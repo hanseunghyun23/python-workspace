@@ -4,7 +4,7 @@
 사용자 정의 함수 = 회사 부서 개발자가 재사용하거나 코드를 관리하기 위해 키워드로 직접 만드는 기능
 def = 기능만들기 시작하겠다.
 '''
-from timeit import default_repeat
+#from timeit import default_repeat
 
 print("hi") # 출력
 len([1,2,3]) #길이를 반환하는 것
@@ -68,3 +68,13 @@ def 정보(**kwargs):
         print(f"{k} : {v}")
 
 정보(name="아섭", age=20,city="부산")
+
+
+## 4. 기본값이 존재하는 매개변수와 기본값이 없는 매개변수가 있을 때
+# 기본값이 없는  age 와 name 은 반드시 기본값이 있는 매개변수들보다 맨 앞쪽으로 우선적으로 위치해야 한다
+##def 매개변수들(age,name,height=175.5,hobby="음악듣기"):
+def 매개변수들(name,age,height=175.5,hobby="음악듣기"):
+    print(f"{name}은 {age}세 이고 키는{height} 이며, 취미는 {hobby}이다")
+
+
+

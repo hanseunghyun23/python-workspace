@@ -26,11 +26,20 @@ def average(a, b, c):
 
     return (a+b+c)/3
 
-res = average(a = int(input()),b = int(input()),c = int(input()))
-print(f"{a}",average.b,average.c, res)
-
-
-def say_hi(name,greeting="좋은하루에요"):
+res = average(10,20,30)
+print(f"평균은 {res}입니다")
 
 
 
+def add(a+b):
+    return a+b
+
+        ## 기본값이 있는 매개변수가 ()안에 존재할 때 기본값 업는 매개변수 뒤에 위치하고
+        #    매개변수 안에서 기본값이 없는 매개변수들이 맨 앞으로 위치해야 한다
+
+
+def show(n):
+    print(f"결과는 {n} 입니다")
+
+show(add(7,8))
+print(add(7,8))
