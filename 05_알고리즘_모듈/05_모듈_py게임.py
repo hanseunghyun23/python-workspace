@@ -13,9 +13,18 @@ import pygame
 
 pygame.init() #pygame. 초기세팅
 화면 = pygame.display.set_mode((800,600))
-pygame.display.set_caption("나의 게임") #창 제목
+pygame.display.set_caption("공 움직이기") #창 제목
 시계= pygame.time.Clock()                 # FPS 조절용
 
+#공 초기 설정
+공_x = 400
+공_y = 300
+공크기 = 20
+속도 = 5
+#튜플 형태로 해서 흰색 컬러 추후 변경 불가하게 값 설정
+흰색=(255,255,255) #255 = F
+검정=(0,0,0)
+빨강=(255,0,0)
 #게임 루흐 (tkinter 의 mainloop 같은거)
 실행중=True
 while 실행중:
@@ -25,7 +34,23 @@ while 실행중:
         if 이벤트.type == pygame.QUIT: # x버튼을 마우스로 클릭하면
             실행중=False
 
-    화면.fill((0,0,0))     #화면 배경색 (r,g,b) 255 255 255 white
+
+#키보드 입력으로 공 이동
+    키 = pygame.key.get_pressed() #키 안에 모든 키의 상태변소가 들어있는 상태
+    if 키 [pygame.K_LEFT]: 공_x -=속도 # 공x 가로 위치를 x가 줄면 왼쪽 이동
+    if 키 [pygame.K_RIGHT]: 공_x +=속도 #공x 가 늘면 속도만큼 오른쪽으로 이동
+    if 키 [pygame.K_UP]: 공_y -=속도   #공 y 가 줄면 위쪽으로 이동
+    if 키 [pygame.K_DOWN]: 공_y +=속도  # 공y 가 늘면 아래쪽 이동
+
+    #벽 충돌(화면 밖으로 공이 나가지 못하게)
+    공_x=max(공크기, min(800-공크기,공_x))
+    공_y=max(공크기, min(800-공크기,공_y))
+
+    #화면 그리기
+    화면.fill(검정)
+    pygame.draw.circle(화면, 빨강, (공_x, 공_y), 공크기)
+
+        #화면 배경색 (r,g,b) 255 255 255 black
     pygame.display.flip()   #화면 갱신
 
     시계.tick(60)
