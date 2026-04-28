@@ -4,7 +4,7 @@ from newspaper import Article
 import nltk
 import requests
 from bs4 import  BeautifulSoup
-
+import time
 nltk.download('punkt_tab')
 
 def news1():
@@ -67,24 +67,22 @@ def 기사수집(url):
     return 제목,내용,기자,날짜
 
 
+def 뉴스20개수집():
+    url목록 = url목록가져오기()
+
+    #순서번호
+    for i, url in enumerate(url목록):
+        print(f"\n{i+1}번째 뉴스기사")
+        제목, 내용, 기자, 날짜 = 기사수집(url)
+        print("제목 : ",제목)
+        print("내용 : ",내용)
+        print("기자 : ",기자)
+        print("날짜 : ",날짜)
+        time.sleep(1)
+
+    print("수집 완료")
+뉴스20개수집()
 
 
 
 
-
-
-news1()
-
-def news2():
-    주소 = "https://n.news.naver.com/article/277/0005755604?ntype=RANKING"
-
-    article = newspaper.article(주소, language="ko")
-    # article.download() nltk 안에 있는 punkt_tab가져와서 설치하기를 최초1회 실행하고 나면 매번 작성할 필요 X
-    article.parse()
-
-    print("제목 : " , article.title)
-    print("내용 : " , article.text)
-    print("기자 : " , article.authors)
-    print("날짜 : " , article.publish_date)
-
-news2()
