@@ -6,7 +6,36 @@ import requests
 from bs4 import  BeautifulSoup
 import time
 nltk.download('punkt_tab')
+'''
+select vs find
+soup.select()
+- CSS 선택자
+- 리스트(여러개)
+- 동일한 태그 동일한 id 나 class 로 다수 데이터를 가져올 때 사용
+- css style에 작성하는 것 처럼 .클래스이름 #아이디이름 표기
 
+soup.find_all("태그이름", class_="클래스이름" id="아이디이름")
+- select와 완전 동일
+- css 선택자 스타일 작성이 어려움;
+- 위와 같이 "태그이름" , class or id 명칭으로 다수 데이터를 가져올 때 사용
+
+soup.find()
+- 하나의 데이터를 가져올 때 사용
+- 태그 + 속성 직접 지정
+
+.startwith("/")
+- ~ 로 시작하는지 확인하는 기능
+- "안녕하세요".startwith("안녕") 안녕하세요는 안녕으로 시작하는게 맞으므로 True
+- "안녕하세요".startwith("hi") 안녕하세요는 hi로 시작하는 게 아니므로 False
+
+크롤링을 할 때 웹사이트 링크는 두 종류로 나뉜다
+#절대경로 - 주소가 완전히 다 있는 상태
+
+
+#상대경로 - 앞부분이 생략됨
+
+보통 상대경로는 앞이 https가 아니라 / 로  시작한다
+'''
 def news1():
 
 
