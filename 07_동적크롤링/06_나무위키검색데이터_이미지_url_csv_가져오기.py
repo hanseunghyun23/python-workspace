@@ -7,7 +7,7 @@ p = sync_playwright().start()
 browser = p.chromium.launch(headless=False)
 page = browser.new_page()
 
-검색어목록 = ["강아지","고양이"."토끼"]
+검색어목록 = ["강아지","고양이","토끼"]
 결과리스트=[]
 
 for 검색 in 검색어목록:
