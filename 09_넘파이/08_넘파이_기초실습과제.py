@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 def 배열만들기():
     #1. 0이 6개인 배열을 만들고 출력하세요
     ze = np.zeros(6)
@@ -96,17 +97,18 @@ def 카페매출분석():
 
     sale = sales*4500
 
-
+plt.rcParams['font.family'] = 'D2Coding'
+plt.rcParams['axes.unicode_minus'] = False
 def 데이터확인():
     df = pd.read_csv("소상공인시장진흥공단_전국_카페_점포수_11_04_2019.csv", encoding="cp949")
     업소수 = np.array(df["업소수"])
 
    # 1. df.head()로 상위 5개 행을 출력하세요
-    df.head()
+    print(df.head())
    # 2. df.shape로 행과 열 개수를 출력하세요
-    df.shape()
+    print(df.shape())
    # 3. 업소수 배열을 출력하세요
-   print()
+   print(np.sum)
 
 
 

@@ -20,6 +20,7 @@ to_csv 와 같은 형식으로 만들 때에는 컬럼의 이름들과 각 컬�
 '''
 
 import pandas as pd
+from pandas.conftest import index
 
 #df = pd.read_csv("행정안전부_착한가격업소_현황_20260331.csv")
 # 보통 한국에서 만든 csv파일은 cp0949 = 한국버전 한국어-> 컴퓨터언어 상호작용 형태로 파일이 만들어진다
@@ -103,6 +104,108 @@ def 데이터결측치정리_조회():
 데이터결측치정리_조회()
 #데이터정제조회()
 
+def 배열_1차원배열_2차원배열():
+    #Series 1차원 배열
+    s = pd.Series([10,20,30],index=['a','b','c'])
+    #DataFrame 2차원 배열
+    #dict은  {}축약형으로
+    #df_dict 와 df_중괄호 는 같은 결과 같은 의미 같은 뜻으로 작성 방식만 다르다.
+    df_dict = pd.DataFrame(dict(
+        name=['Alice','Bob','Charlie'],
+    age=[25,30,35],
+    score = [90,85,92]
+
+    ))
+    df_중괄호 = pd.DataFrame(
+        {
+        'name':['Alice','Bob','Charlie'],
+        'age':[25,30,35],
+        'score' : [90,85,92]
+        }
+    )
+    #대부분의 데이터 구조는 다차원 구조
+
+def 머지_콘캣_피벗테이블():
+    df1 = pd.DataFrame(
+        dict(
+            id=[1,2,3],
+            name=['A','B','C']
+        )
+    )
+
+    df2 = pd.DataFrame(
+        dict(
+            id=[1,2,3],
+            name=[90,85,92]
+        )
+    )
+    # 개별로 존재하는 테이블 합치기
+    #SELECT
+    #FROM 가게 s, 주문 o
+    #   판다스에서 합치기 기능을 가져와 사용하겠다 .merge(df1,df2,on='id') 1번 테이블과 2번 테이블을 합칠건데
+    #                                                                       두 컬럼에 동일하게 존재하는 컬럼이름 작성)
+    #WHERE s.id = 0.id
+    합치기 = pd.merge(df1,df2,on='id') #SQL JOIN 문처럼 합칠 기분이 되는 컬럼 설정
+    print(합치기)
+
+    df_a = pd.DataFrame(
+        dict(
+            name=['A','B']
+        )
+    )
+
+    df_b = pd.DataFrame(
+        dict(
+            name=['C','D']
+        )
+    )
+    #pd         .concat([df_a,df_b], ignore_index=True)
+    #pd.concat([df_a,df_b], ignore_index=True)
+    result = pd.concat([df_a,df_b], ignore_index=True)
+    result = pd.concat([df_a,df_b]) #igonre_index=False 가 기본값 데이터 그대로 유지하면서 합치도록
 
 
 
+머지_콘캣_피벗테이블()
+
+def 필터링_정렬_그룹화():
+    #필터링  : 조건으로 행 추려내기
+
+
+    df[df['컬럼이름']>=30] #특정 컬럼에서 29이하인 데이터 컷
+
+    #여러 조건 (& | 사용)
+
+
+def 피벗테이블():
+    #데이터에서 피벗이란
+    #데이터를 출 중심으로 회전시켜 보는 각도를 다르게 하겠다
+
+
+    df.pivot_table(
+        values='score',
+        index='name',
+        columns='subject',
+        aggfunc='mean'
+    )
+    #index = 왼쪽에 세울 것 columns = 위에 펼칠 것 values = 안에 채울 데이터
+
+def 피벗테이블예시():
+    df.pd.DataFrame(
+        dict(
+            name=['Alice','Alice','bob','bob'],
+            subject=['math','eng','math''eng'],
+            score = [90,85,80,75]
+        )
+    )
+    print("============피벗 전 데이터 확인===============")
+    print(df)
+
+    피벗작업 = df.pivot_table(
+        values = 'score',
+        index='name',
+        columns='subject',
+        aggfunc='mean'
+    )
+    print(피벗작업)
+    print("============피벗 후 데이터 확인 ==============")
