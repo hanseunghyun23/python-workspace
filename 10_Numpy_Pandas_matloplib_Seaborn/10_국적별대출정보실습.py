@@ -2,8 +2,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 import numpy as np
+'''
 
-plt.rcParams['font.family'] = 'D2Coding'
+국적별 매출파일처럼 한글데이터가 그래프 상호에 직접적으로 들어가있ㅇ서 깨지는 경우
+폰트의 위치를 직접적으로 가져와서 세팅
+Malgun Gothic
+'''
+plt.rcParams['font.family'] = 'Malgun Gothic'
 plt.rcParams['axes.unicode_minus'] = False
 
 sns.set_theme(style='whitegrid')
